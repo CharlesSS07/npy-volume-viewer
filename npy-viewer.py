@@ -12,6 +12,8 @@ if __name__=='__main__':
     import os
     import sys
 
+    npy_viewer_folder = os.path.dirname(__file__)
+
     if len(args.npys)==0:
         raise ValueError('no files to open')
         sys.exit()
@@ -45,6 +47,6 @@ if __name__=='__main__':
             subprocess.run(['mkdir', '-p', dr])
             fn = os.path.join(dr, os.path.basename(f)+'.vdb')
             vdb.write(fn, grids=[vecgrid])
-            print(os.system(' '.join(['blender', 'vdb-viewer.blend', '--python-expr', f'"import bpy;bpy.ops.object.volume_import(filepath=\'{fn}\', relative_path=True, align=\'WORLD\', location=(0, 0, 0))"'])))
+            print(os.system(' '.join(['blender', f'{npy_viewer_folder}/vdb-viewer.blend', '--python-expr', f'"import bpy;bpy.ops.object.volume_import(filepath=\'{fn}\', relative_path=False, align=\'WORLD\', location=(0, 0, 0))"'])))
             #print(os.system(' '.join(['blender', 'vdb-viewer.blend', '--python-expr', '"print(\'hello\')"'])))
     
