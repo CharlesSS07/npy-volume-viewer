@@ -6,7 +6,9 @@ Blender:
 Install Blender3D 2.83, either from a package manager, or https://blender.org.
 
 pyopenvdb:
+
 If you can use docker, install pyopenvdb using that.
+
 Otherwise,
 I use conda, with pyopenvdb installed using pip:
 `conda create --name vdbenv python=3.7`
