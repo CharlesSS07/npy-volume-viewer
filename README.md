@@ -18,7 +18,7 @@ Install OpenVDB
 7. `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/python3.7/site-packages/`. Find this folder via `find $CONDA_PREFIX -name pyopenvdb.so`.
 8. Run steps 6 and 7 whenever you create a new terminal, or enter the environment. In a future version, it would be great to make this part automatic.
 
-These steps have installed openvdb on a machine runnign Ubuntu 18.04.4 LTS.
+These steps have installed openvdb on a machine running Ubuntu 18.04.4 LTS.
 
 ## Hardware Requiremnets
 Blender Volumetrics Rendering requires a lot of resourses, so you'll likley need a high end NVIDIA gpu.
