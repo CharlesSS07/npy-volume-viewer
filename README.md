@@ -1,7 +1,7 @@
 # npy-volume-viewer
 View your 3D numpy arrays in Blender3D. 4D on the way.
 
-![](readme-images/vdb-viewer.001.png)
+![](readme-images/vdb-viewer.002.png)
 ![](readme-images/vdb-viewer.png)
 All Lung CT scan data from RIDER Lung CT dataset: https://wiki.cancerimagingarchive.net/display/Public/RIDER+Lung+CT
 
