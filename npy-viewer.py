@@ -47,6 +47,23 @@ if __name__=='__main__':
             subprocess.run(['mkdir', '-p', dr])
             fn = os.path.join(dr, os.path.basename(f)+'.vdb')
             vdb.write(fn, grids=[vecgrid])
-            print(os.system(' '.join(['blender', f'{npy_viewer_folder}/vdb-viewer.blend', '--python-expr', f'"import bpy;bpy.ops.object.volume_import(filepath=\'{fn}\', relative_path=False, align=\'WORLD\', location=(0, 0, 0))"'])))
+            print(os.system(' '.join(['blender', f'{npy_viewer_folder}/vdb-viewer.blend', '--python-expr', f'''"
+import bpy;
+bpy.ops.object.volume_import(filepath=\'{fn}\', relative_path=False, align=\'WORLD\', location=(0, 0, 0));
+bpy.ops.object.select_all(action=\'SELECT\');
+bpy.ops.transform.resize(
+    value=(0.01, 0.01, 0.01),
+    orient_type=\'GLOBAL\',
+    orient_matrix=((1, 0, 0),(0, 1, 0),(0, 0, 1)),
+    orient_matrix_type=\'GLOBAL\',
+    mirror=True,
+    use_proportional_edit=False,
+    proportional_edit_falloff=\'SMOOTH\',
+    proportional_size=1,
+    use_proportional_connected=False,
+    use_proportional_projected=False
+);
+bpy.context.selected_objects[0].data.materials.clear();
+bpy.context.selected_objects[0].data.materials.append(bpy.data.materials[\'CT Scan Visualize Material\']);"'''.replace('\n', '')])))
             #print(os.system(' '.join(['blender', 'vdb-viewer.blend', '--python-expr', '"print(\'hello\')"'])))
     
