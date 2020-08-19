@@ -7,6 +7,8 @@ if __name__=='__main__':
     parser.add_argument('npys', type=str, nargs='+',
                     help='paths to npy files')
 
+    parser.add_argument('--min-max-norm', action='store_true')
+
     args = parser.parse_args()
 
     import os
@@ -28,9 +30,16 @@ if __name__=='__main__':
 
     import tempfile
 
+    def minmax(a):
+        a-=np.min(a)
+        a/=np.max(a)
+        return a
+
     for f in [fn for glb in args.npys for fn in glob.glob(glb)]:
         print(f)
         array = np.load(f).get('arr_0')
+        if args.min_max_norm:
+            array = minmax(array)
         if len(array.shape)==3: # 3d data
             vecgrid = vdb.FloatGrid()
             vecgrid.name = 'density'
