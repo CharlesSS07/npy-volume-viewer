@@ -30,3 +30,14 @@ Run `python ./npy-viewer xxxxx.npy yyyyy.npz nnnnn.npy` to view 3D arrays stored
 Here, instead of a shebang, the python specified on the commandline is used. This assumes you have activated your vdb environment
 
 Note that to simply convert a npy to a vdb, a tmpdir is created on run, which contains the vdb used by blender.
+
+## Use
+
+Blender is used to view a vdb version of the npy.
+
+Middle click can be used to orbit the vdb.
+
+Hold shift to pan.
+
+Press z and select render to see the full visualization.
+
